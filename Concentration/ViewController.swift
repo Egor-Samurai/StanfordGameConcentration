@@ -10,8 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var flipCount = 0
   
+    @IBOutlet weak var flipLabelCount: UILabel!
+    
     @IBAction func touchbutton(_ sender: UIButton) {
+        flipCount += 1
+        flipLabelCount.text = "Flips: \(flipCount)"
         flipCard(withEmoji: "👻", on: sender)
     }
     
