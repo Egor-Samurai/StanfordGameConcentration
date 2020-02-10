@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
  
-   lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count) / 2)
+   lazy var game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
     
     var flipCount = 0 {
         didSet {
@@ -26,12 +26,9 @@ class ViewController: UIViewController {
     
     @IBAction func touchbutton(_ sender: UIButton) {
         flipCount += 1
-        if  let cardNumber = cardButtons.firstIndex(of: sender) {
+        if  let cardNumber = cardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
-            
-        } else {
-            print("choosen card was not in cardButtons")
         }
         
     }
@@ -51,6 +48,7 @@ class ViewController: UIViewController {
     }
 
     var emojiChoice = ["😈","👻","💩","🎃","👽","🖕","😼","👺","💀"]
+    
     var emoji = [Int:String]()
     func emoji(for card: Card) -> String  {
         if emoji[card.identifier] == nil , emojiChoice.count > 0 {

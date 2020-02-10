@@ -21,7 +21,7 @@ struct Card {
     
     
     init() {
-        self.identifier = 0
+        self.identifier = Card.getUniqueIdentifier()
     }
 }
 
